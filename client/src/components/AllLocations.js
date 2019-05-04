@@ -14,8 +14,7 @@ export class AllLocations extends Component {
 
         return (
             <div>
-                <h1>Location Log</h1>
-                <ul>{items}</ul>
+                <span>{items}</span>
             </div>
         )
     }

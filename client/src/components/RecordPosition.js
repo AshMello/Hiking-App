@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './RecordPosition.css';
 
 export class RecordPosition extends Component {
 
@@ -45,8 +46,10 @@ export class RecordPosition extends Component {
 
     render() {
         return (
-        <div>
-            <button onClick={this.handleSaveClick}>Save Location</button>
+        <div className="buttonGroup">
+            {/* <button onClick={this.handleSaveClick}>Save Location</button> */}
+            <button className="targetButton"><img src="/define-location-icon-128.png" alt="button" onClick={this.handleSaveClick}/></button>
+            <h2>Find my Location</h2>
             <label>{this.state.message}</label>
         </div>
         )
