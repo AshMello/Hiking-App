@@ -2,6 +2,8 @@
 import React, {Component} from 'react';
 import './App.css';
 import {AllLocations} from './components/AllLocations';
+import Login from './components/Login';
+// import Login from './components/Login'
 
  class App extends Component {
    constructor() {
@@ -27,6 +29,7 @@ import {AllLocations} from './components/AllLocations';
    render() {
      return (
        <div>
+         {/* <Login /> */}
       <AllLocations records= {this.state.locations}/>
       </div>
      )   

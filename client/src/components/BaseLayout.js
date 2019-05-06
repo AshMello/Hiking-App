@@ -9,7 +9,8 @@ export class Menu extends Component {
             <ul className='ulNav'>
                 <li><NavLink className='Nav-link' to='/record-position'>Record Position</NavLink></li>
                 <li><NavLink className='Nav-link' to='/' exact>View All Locations</NavLink></li>  
-                <li className='links'><NavLink className='Navs' to='/' exact>Login</NavLink></li>  
+                <li className='links'><NavLink className='Navs' to='/login' exact>Login</NavLink></li>  
+                <li className='links'><NavLink className='Navs' to='/register' exact>Register</NavLink></li>  
             </ul>
         )
     }
