@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
 import './App.css';
-import {AllLocations} from './components/AllLocations';
+import AllLocations from './components/AllLocations';
 import Login from './components/Login';
 // import Login from './components/Login'
 

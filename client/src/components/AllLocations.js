@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
+import './AllLocations.css';
+import { connect } from 'react-redux'
 
-export class AllLocations extends Component {
+class AllLocations extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
-            data:'',
-            message: ''
+            data: ''
         }
     }
     
@@ -35,33 +36,57 @@ export class AllLocations extends Component {
 }
 
     handlePhoneEntry = (e) => {
-        [e.target.name] = e.target.value
+        this.setState({
+            [e.target.name]: e.target.value
+        })
     }
 
     // handleTextMessage() {
 
-    //     fetch('http://localhost:8080/sendsms')
-    // }
+    //     const data = {
+    //         phone: this.state.data, 
+    //         latitude: this.props.latitude,
+    //         longitude: this.props.longitude
+    //     }
 
+    //     fetch('http://localhost:8080/sendsms', {
+    //         method: 'POST',
+    //         headers: {'Content-Type': 'application/json'},
+    //         body: JSON.stringify({
+    //              data: data
+    //             })
+    //     }).then(response => response.json())
+    //     .then(result => console.log(result))
+    // }
 
 
     render() {
         const locations = this.props.records
         let items = locations.map((location) => {
-            return <li key={location.id}>
+            return <div className="itemList">
+            <li className="list" key={location.id}>
             <a name="message" href={`https://www.latlong.net/c/?lat=${location.latitude}&long=${location.longitude}`}>{location.latitude}, {location.longitude}</a>
             <i>{location.createdAt}</i>
-            <input name="data" onChange={this.handlePhoneEntry} placeholder="Enter Phone Number"></input>
-            {/* <button onClick={this.handleTextMessage()}>Text Location</button> */}
             <button onClick={() => this.deleteLocation(location)}>Delete</button>
             </li>
+            </div>
 
         })
 
         return (
-            <div>
+            <div className="container">
+                <h1>All My Locations</h1>
                 <span>{items}</span>
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        latitude: state.latitude, 
+        longitude: state.longitude
+    }
+}
+
+export default connect(mapStateToProps)(AllLocations)

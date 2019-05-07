@@ -7,9 +7,9 @@ const jwt = require('jsonwebtoken')
 const PORT = 8080
 const bcrypt = require('bcrypt')
 const saltRounds = 10
-const twilio = require('twilio')
 const sid = "ACda4049a8a2659a0be822a4cbbe843481"
 const token = "48cade4f7097fe48367e2d0b1eea7fff"
+const client = require('twilio')(sid, token);
 
 app.use(bodyParser.json())
 app.use(cors())
@@ -115,12 +115,17 @@ app.post('/delete', (req, res) => {
     })
 })
 
-app.post('/sendsms', bodyParser.json(), (req, res) => {
-    var client = require('twilio')(sid, token);
+app.post('/sendsms', (req, res) => {
+
+    const latitude = req.body.data.latitude
+    const longitude = req.body.data.longitude
+
+    console.log(req.body.data)
+
     client.messages.create({
-      to: req.body.data,
+      to: req.body.data.phone,
       from: '+18304200813',
-      body: req.body.message
+      body: `https://www.latlong.net/c/?lat=${latitude}&long=${longitude}`
     }).then(message => console.log(message.body))
     })
 

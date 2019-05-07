@@ -1,16 +1,18 @@
 body {
-    background-image: url('./fog-foggy-forest-4827.jpg');
+    background-color: rgb(228, 219, 208);
     background-size: cover;
 }
 
-.targetButton {
-    background-color: transparent;
-    border: none;
-}
+
 
 .buttonGroup {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding-top: 8%;
+    width: 150px;
+    margin-left: 43%; 
 }
 
 h2 {
