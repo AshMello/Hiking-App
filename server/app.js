@@ -11,32 +11,9 @@ const sid = "ACda4049a8a2659a0be822a4cbbe843481"
 const token = "48cade4f7097fe48367e2d0b1eea7fff"
 const client = require('twilio')(sid, token);
 
-app.use(bodyParser.json())
 app.use(cors())
+app.use(bodyParser.json())
 
-app.get('/api/coordinates', (req,res) => {
-    models.Location.findAll().then(records => {
-        res.json(records)
-    })
-})
-
-function authenticate(req,res, next) {
-    let headers = req.headers["authorization"]
-
-    let token = headers.split(' ')[1]
-
-    jwt.verify(token,'secret',(err, decoded) => {
-        if(decoded) {
-            if(decoded.username) {
-                next()
-            } else {
-                res.status(401).json({message: 'Token invalid'})
-            }
-        } else {
-            res.status(401).json({message: 'Token invalid'})
-        }
-    })
-}
 
 app.post('/register', (req,res) => {
     bcrypt.hash(req.body.password, saltRounds, function(err,hash) {
@@ -63,45 +40,54 @@ app.post('/register', (req,res) => {
     })
 })
 
-
-
 app.post('/login', (req, res) => {
     let username = req.body.username
     let password = req.body.password
 
-    models.User.findAll({
+    models.User.findOne({
         where: {
-            username: username,
-            password: password
+            username: username
         }
     })
     .then((user) => {
-        if(user) {
 
-            jwt.sign({ username: username}, 'secret', function(err, token) {
-                if (token) {
-                    res.json({token: token})
-                } else {
-                    res.status(500).json({message: 'unable to generate token'})
-                }
-            })
-        }
+        bcrypt.compare(password, user.password).then(function(result) {
+          if(result) {
+            jwt.sign({name: user.name}, 'secret', function(err, token) {
+              if(token) {
+              res.json({token: token, id: user.dataValues.id})
+              } else {
+                res.status(500).json({message: 'Unable to generate token'})
+               }
+             })
+           }
+        })
+      })
+})
+
+app.get('/api/coordinates', (req,res) => {
+    models.Location.findAll().then(records => {
+        res.json(records)
     })
 })
+
 
 app.post('/api/coordinates', (req,res) => { 
 
     let latitude = req.body.latitude
     let longitude = req.body.longitude
+    let userId = req.body.userId
 
     let positionRecord = models.Location.build({
         latitude: latitude,
-        longitude: longitude
+        longitude: longitude,
+        userId: userId
     })
 
     positionRecord.save()
     .then((newRecord) => {
         res.json({message: 'record saved success!'})
+        console.log(newRecord)
     }).catch(error => res.json({message: 'fail'}))
 
 })
@@ -133,6 +119,8 @@ app.get('/sendsms', (req,res) => {
     app.render('/sendsms')
 })
 
-app.listen(PORT, () => {
-    console.log('Server')
-})
+
+app.listen(PORT,() => {
+    console.log('Server is running...')
+  })
+  

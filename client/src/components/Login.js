@@ -15,18 +15,20 @@ class Login extends Component {
     }
 
     handleLoginClick = () => {
-        axios.post('http://localhost:8080/login',{
+
+        axios.post('http://localhost:8080/login', {
             username: this.state.username,
             password: this.state.password
         }).then(response => {
             let token = response.data.token
-            console.log(token)
-
+            let id = response.data.id
+            console.log(token, id)
             localStorage.setItem('jsonwebtoken', token)
-            this.props.onAuthenicated(token)
+            this.props.onAuthenticated(token,id)
             setAuthenticationHeader(token)
-        }).catch(error => console.log(error))
+        }).catch(error => console.log(error.response))
     }
+ 
 
     handleTextBoxChange = (e) => {
         this.setState({
@@ -47,8 +49,8 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAuthenticated: (token) => dispatch({type: 'ON_AUTHENTICATED', token: token})
+        onAuthenticated: (token,id) => dispatch({type: 'ON_AUTHENTICATED', token: token, id: id})
     }
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login)

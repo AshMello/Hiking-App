@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "postgres",
-    "password": null,
-    "database": "position",
-    "host": "127.0.0.1",
+    "username": "uqznyylp",
+    "password": "f0OqS6hXcJvtSwo0_A6jnEd9nly1p6iN",
+    "database": "uqznyylp",
+    "host": "raja.db.elephantsql.com",
     "dialect": "postgres"
   },
   "test": {
-    "username": "postgres",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "uqznyylp",
+    "password": "f0OqS6hXcJvtSwo0_A6jnEd9nly1p6iN",
+    "database": "uqznyylp",
+    "host": "raja.db.elephantsql.com",
+    "dialect": "postgres"
   },
   "production": {
-    "username": "postgres",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "uqznyylp",
+    "password": "f0OqS6hXcJvtSwo0_A6jnEd9nly1p6iN",
+    "database": "uqznyylp",
+    "host": "raja.db.elephantsql.com",
+    "dialect": "postgres"
   }
 }

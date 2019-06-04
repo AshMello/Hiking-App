@@ -6,27 +6,25 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {BaseLayout} from './components/BaseLayout';
 import RecordPosition from './components/RecordPosition';
+import { setAuthenticationHeader } from './utils/authenticate';
 import AllLocations from './components/AllLocations';
-import Login from './components/Login';
-import Register from './components/Register';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './store/reducer'
+import reducer from './store/reducer';
+import requireAuth from './components/requireAuth';
 
 const store = createStore(reducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
+setAuthenticationHeader(localStorage.getItem('jsonwebtoken'))
 
 ReactDOM.render(
     <Provider store={store}>
     <BrowserRouter>
     <BaseLayout>
-    <Switch>
+    <Switch> 
         <Route path='/' exact component={App} />
-        <Route path='/record-position' exact component={RecordPosition} />
-        <Route path='/all-locations' exact component={AllLocations} />
-        <Route path='/login' exact component={Login} />
-        <Route path='/register' exact component={Register} />
-
+       <Route path='/record-position' exact component={requireAuth(RecordPosition)} /> 
+        <Route path='/all-locations' exact component={requireAuth(AllLocations)} /> 
     </Switch>
     </BaseLayout>
     </BrowserRouter>

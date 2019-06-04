@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import './RecordPosition.css';
+import React, {Component} from 'react'
 import { connect } from 'react-redux'
 
 class RecordPosition extends Component {
@@ -21,6 +20,7 @@ class RecordPosition extends Component {
             body: JSON.stringify({
                 latitude: this.state.latitude,
                 longitude: this.state.longitude,
+                userId: this.props.id
             })
         }).then(response => response.json())
         .then(result => {
@@ -34,22 +34,18 @@ class RecordPosition extends Component {
     }
 
     componentDidMount() {
-
         if('geolocation' in navigator) {
-            navigator.geolocation.getCurrentPosition((position) => {
-
-                this.props.onLocationLoaded(position.coords)
-
-
-                this.setState({
-                    latitude: position.coords.latitude,
-                    longitude:position.coords.longitude
-                })
+          navigator.geolocation.getCurrentPosition((position) => {
+            this.props.onLocationLoaded(position.coords)
+            this.setState({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
             })
+          })
         }
-    }
+      }
 
-    handlePhoneEntry = (e) => {
+      handlePhoneEntry = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -57,7 +53,6 @@ class RecordPosition extends Component {
 
 
     handleTextMessage() {
-
         const data = {
             phone: this.state.data, 
             latitude: this.props.latitude,
@@ -99,9 +94,10 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        latitude: state.latitude, 
-        longitude: state.longitude
+      id: state.uid,
+      latitude: state.latitude, 
+      longitude: state.longitude
     }
-}
+  }
 
-export default connect(mapStateToProps,mapDispatchToProps)(RecordPosition)
+export default connect(mapStateToProps, mapDispatchToProps)(RecordPosition)

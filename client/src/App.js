@@ -1,40 +1,19 @@
-
 import React, {Component} from 'react';
+import Login from './components/Login'
+import Register from './components/Register'
 import './App.css';
-import AllLocations from './components/AllLocations';
-import Login from './components/Login';
-// import Login from './components/Login'
 
- class App extends Component {
-   constructor() {
-     super()
-
-     this.state = {
-       locations: [],
-     }
-   }
-
-   componentDidMount() {
-      let url = 'http://localhost:8080/api/coordinates'
-      fetch(url)
-      .then(response => response.json())
-      .then(results => {
-        this.setState({
-          locations:results
-        })
-      })
-   }
-
-
-   render() {
-     return (
-       <div>
-         {/* <Login /> */}
-      <AllLocations records= {this.state.locations}/>
-      </div>
-     )   
-   }
-
- }
+class App extends Component {
+  render(){
+  return (
+    <div className="App">
+      <h1>HikeTracker</h1>
+      <span>Welcome to HikeTracker, a resource for Hikers to log and text their location.</span>
+      <span>Log in to save your locations</span>
+      <Login />
+      <Register />
+    </div>
+  );
+}}
 
 export default App;
