@@ -34,7 +34,6 @@ app.post('/register', (req,res) => {
             else {
               newUser.save().then(function(newUser){
              })
-    
         }
       })
     })
@@ -105,19 +104,21 @@ app.post('/sendsms', (req, res) => {
 
     const latitude = req.body.data.latitude
     const longitude = req.body.data.longitude
+    const messages = req.body.messages
 
     console.log(req.body.data)
 
     client.messages.create({
       to: req.body.data.phone,
       from: '+18304200813',
-      body: `https://www.latlong.net/c/?lat=${latitude}&long=${longitude}`
+      body: `${req.body.data.messages} https://www.latlong.net/c/?lat=${latitude}&long=${longitude}`
     }).then(message => console.log(message.body))
     })
 
 app.get('/sendsms', (req,res) => {
     app.render('/sendsms')
 })
+
 
 
 app.listen(PORT,() => {

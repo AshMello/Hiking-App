@@ -1,0 +1,47 @@
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-items: center;
+    height: 50%;
+}
+
+.logins {
+    border: none;
+    border-radius: 4px;
+    background: rgba(201, 207, 207, 0.5);
+    height: 50px;
+    margin-bottom: 10px;
+    color: #19405B;
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.logins:focus {
+    outline: none;
+}
+
+input::placeholder {
+    color: #19405B;
+}
+
+.loginBtn {
+background-color: #C4C4C5; /* Green */
+  border: none;
+  color: #19405B;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 50px;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Poppins|Raleway&display=swap');

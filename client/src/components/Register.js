@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 // import axios from 'axios';
 import { connect } from 'react-redux';
-// import {setAuthenticationHeader} from '../utils/authenticate'
+import './LoginRegister.css';
 
 
 class Register extends Component {
@@ -42,10 +42,10 @@ class Register extends Component {
 
     render() {
         return(
-            <div>
-                <input name="username" onChange={this.handleTextBoxChange} placeholder='username'></input>
-                <input name="password" onChange={this.handleTextBoxChange} placeholder='password'></input>
-                <button onClick={this.handleRegisterClick}>Register</button>
+            <div className="loginContainer">
+                <input className="logins" name="username" onChange={this.handleTextBoxChange} placeholder='username'></input>
+                <input type="password" className="logins" name="password" onChange={this.handleTextBoxChange} placeholder='password'></input>
+                <button className="loginBtn" onClick={this.handleRegisterClick}>Register</button>
             </div>
         )
     }

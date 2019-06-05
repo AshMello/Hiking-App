@@ -22,9 +22,9 @@ ReactDOM.render(
     <BrowserRouter>
     <BaseLayout>
     <Switch> 
-        <Route path='/' exact component={App} />
+       <Route path='/' exact component={App} />
        <Route path='/record-position' exact component={requireAuth(RecordPosition)} /> 
-        <Route path='/all-locations' exact component={requireAuth(AllLocations)} /> 
+       <Route path='/all-locations' exact component={requireAuth(AllLocations)} /> 
     </Switch>
     </BaseLayout>
     </BrowserRouter>

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import './BaseLayout.css';
 
 export class Menu extends Component {
     handleLogoutClick = () => {
@@ -14,12 +15,12 @@ export class Menu extends Component {
 
     render() {
         return (
-            <div>
-            <ul className='ulNav'>
-                <li><NavLink className='Nav-link' to='/' exact>Home</NavLink></li> 
+            <div className="body">
+            <ul className='ulNav'> 
+                <li className="logo">HikeTracker</li>
                 <li><NavLink className='Nav-link' to='/record-position'>Record Position</NavLink></li> 
                 <li><NavLink className='Nav-link' to='/all-locations'>All Locations</NavLink></li> 
-                {this.props.isAuthenticated ? <li><a className='link' onClick={this.handleLogoutClick} href="#">Logout</a> 
+                {this.props.isAuthenticated ? <li className='Nav-link'><a className='Nav-link' onClick={this.handleLogoutClick} href="#">Logout</a> 
                 </li> : null }
             </ul>
             </div>

@@ -1,0 +1,56 @@
+.ulNav li {
+    list-style: none;
+
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.ulNav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: #C4C4C5;
+    font-family: 'Poppins', sans-serif; 
+    position: fixed; 
+    width: 100%;
+}
+
+.Nav-link {
+    text-decoration: none;
+    justify-content: space-around;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #4B77AF;
+    text-transform: uppercase;
+}
+
+.Nav-link:hover, .Nav-link:active {
+    color: #19405B;
+}
+
+.logo {
+    color: #4B77AF;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif; 
+}
+
+@media screen and (max-width:768px){
+    .body {
+        overflow-x: hidden;
+    }
+
+    .ulNav {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css?family=Poppins|Raleway&display=swap');
