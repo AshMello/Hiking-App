@@ -1,0 +1,85 @@
+.recordings {
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.bg {
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 100%;
+  
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: 100%;
+  
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.recordGroup {
+    padding-top: 12%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.textLoc {
+    display: flex;
+}
+
+.recLoc, .texts {
+    display: flex;
+    flex-direction: column;
+}
+
+.targetBtn {
+  margin-top: 15px;
+  background-color: #C4C4C5; /* Green */
+  border: none;
+  color: #4B77AF;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.texts textarea {
+        width: 200px;
+        height: 140px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        resize: none;
+        margin-top: 20px;
+        margin-bottom: 20px;
+}
+
+input {
+    border: none;
+    border-radius: 4px;
+    background: rgba(201, 207, 207, 0.5);
+    height: 50px;
+    margin-bottom: 10px;
+    color: #4B77AF;
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+
+input::placeholder {
+    color: #4B77AF;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Poppins|Raleway&display=swap');

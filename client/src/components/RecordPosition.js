@@ -1,5 +1,6 @@
-import React, {Component} from 'react'
-import { connect } from 'react-redux'
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import './RecordPosition.css';
 
 class RecordPosition extends Component {
 
@@ -9,7 +10,8 @@ class RecordPosition extends Component {
         this.state = {
             latitude: '',
             longitude: '',
-            data:''
+            data:'',
+            messages:''
         }
     }
 
@@ -56,7 +58,8 @@ class RecordPosition extends Component {
         const data = {
             phone: this.state.data, 
             latitude: this.props.latitude,
-            longitude: this.props.longitude
+            longitude: this.props.longitude,
+            messages: this.state.messages
         }
 
         console.log(data)
@@ -74,12 +77,26 @@ class RecordPosition extends Component {
 
     render() {
         return (
-        <div className="buttonGroup">
-            <img src="/define-location-icon-128.png" />
-            <button className="targetButton" onClick={this.handleSaveClick}>Find my Location</button>
-            <input name="data" onChange={this.handlePhoneEntry} placeholder="Enter Phone Number"></input>
-            <button onClick={() => this.handleTextMessage()}>Text Location</button>
-            <label>{this.state.message}</label>
+
+        <div className="recordings">
+            <img className="bg" src="https://i.imgur.com/8ynkt9a.jpg" />
+            <div className="recordGroup">
+                <div className="recLoc">
+                    <img className="checkin" src="https://i.imgur.com/cir4nS7.png" />
+                    <button className="targetBtn" onClick={this.handleSaveClick}>Find my Location</button>
+                </div>
+                <div className="textLoc">
+                    <div>
+                        <img className="checkin" src="https://i.imgur.com/auskLTH.png" />
+                    </div>
+                <div className="texts">
+                        <textarea name="messages" onChange={this.handlePhoneEntry} placeholder="Enter Message"></textarea>
+                        <input name="data" onChange={this.handlePhoneEntry} placeholder="Enter Phone Number"></input>
+                        <button className="targetBtn" onClick={() => this.handleTextMessage()}>Text Location</button>
+                        <label>{this.state.message}</label>
+                    </div>
+            </div>
+        </div>
         </div>
         )
     }

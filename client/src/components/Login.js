@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import {setAuthenticationHeader} from '../utils/authenticate'
+import {setAuthenticationHeader} from '../utils/authenticate';
+import { withRouter } from 'react-router-dom';
+import './LoginRegister.css';
 
 class Login extends Component {
 
@@ -22,10 +24,10 @@ class Login extends Component {
         }).then(response => {
             let token = response.data.token
             let id = response.data.id
-            console.log(token, id)
-            localStorage.setItem('jsonwebtoken', token)
-            this.props.onAuthenticated(token,id)
-            setAuthenticationHeader(token)
+            localStorage.setItem('jsonwebtoken', token);
+            this.props.onAuthenticated(token,id);
+            setAuthenticationHeader(token);
+            this.props.history.push("/record-position")
         }).catch(error => console.log(error.response))
     }
  
@@ -38,10 +40,10 @@ class Login extends Component {
 
     render() {
         return(
-            <div>
-                <input name="username" onChange={this.handleTextBoxChange} placeholder='username'></input>
-                <input name="password" onChange={this.handleTextBoxChange} placeholder='password'></input>
-                <button onClick={this.handleLoginClick}>Login</button>
+            <div className="loginContainer">
+                <input className="logins" name="username" onChange={this.handleTextBoxChange} placeholder='username'></input>
+                <input type="password" className="logins" name="password" onChange={this.handleTextBoxChange} placeholder='password'></input>
+                <button className="loginBtn" onClick={this.handleLoginClick}>Login</button>
             </div>
         )
     }
@@ -53,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(null, mapDispatchToProps)(withRouter(Login))
