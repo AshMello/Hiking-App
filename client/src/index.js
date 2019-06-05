@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {BaseLayout} from './components/BaseLayout';
+import BaseLayout from './components/BaseLayout';
 import RecordPosition from './components/RecordPosition';
 import { setAuthenticationHeader } from './utils/authenticate';
 import AllLocations from './components/AllLocations';

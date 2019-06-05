@@ -49,7 +49,7 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAuthenticated: (token,id) => dispatch({type: 'ON_AUTHENTICATED', token: token, id: id})
+        onAuthenticated: (token, id) => dispatch({type: 'ON_AUTHENTICATED', token: token, id: id})
     }
 }
 

@@ -19,22 +19,22 @@ export class Menu extends Component {
                 <li><NavLink className='Nav-link' to='/' exact>Home</NavLink></li> 
                 <li><NavLink className='Nav-link' to='/record-position'>Record Position</NavLink></li> 
                 <li><NavLink className='Nav-link' to='/all-locations'>All Locations</NavLink></li> 
-                {this.props.isAuthenticated ? <NavLink href="#"><li><a className='link' onClick={this.handleLogoutClick} href="#">Logout</a>
-                </li></NavLink> : null }
+                {this.props.isAuthenticated ? <li><a className='link' onClick={this.handleLogoutClick} href="#">Logout</a> 
+                </li> : null }
             </ul>
             </div>
         )
     }
 }
 
-export class BaseLayout extends Component {
+class BaseLayout extends Component {
+        
     render() {
         return (
             <div>
                 <Menu isAuthenticated={this.props.isAuthenticated} logout={this.props.onLogout} history={this.props.history} />
                 {this.props.children}
             </div>
-            
         )
     }
 }
